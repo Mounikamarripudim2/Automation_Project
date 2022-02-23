@@ -1,0 +1,29 @@
+#!/bin/bash
+name="Mounika"
+s3bucket="upgrad-mounika"
+
+sudo apt update -y
+
+sudo apt install apache2 -y
+
+serverStatus=$(service apache2 status)
+
+echo $StatusServer
+
+if [[ $StatusServer == *"active (running)"* ]]
+then
+	echo "Apache server is running"
+else
+	sudo service apache2 start
+	echo "Apache server started"
+fi
+
+if [[ $StatusServer == *"enabled"* ]]
+then
+	echo "Apache server is enabled"
+else	
+	sudo sysmtemctl enable apache2
+	echo "Apache server is enabled"
+fi
+
+
